@@ -47,9 +47,11 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: |
-          assets=$(gh release view ${{ github.ref_name }} --json assets --jq '.assets[]')
+          assets=$(gh release view ${{ github.ref_name }} --json assets --jq '.assets')
           echo "assets=$assets"
           echo "assets=$assets" >> $GITHUB_OUTPUT
+    outputs:
+      assets: ${{ steps.publish.outputs.assets }}
   debug:
     runs-on: ubuntu-latest
     needs: rel
