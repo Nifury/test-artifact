@@ -18,6 +18,13 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: README.md
+  rel:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Init
+        run: |
+          echo "Hello, world!" > README.md
+          echo "Test" > test.txt
       - name: Release-2
         uses: softprops/action-gh-release@v2
         with:
