@@ -28,7 +28,7 @@ jobs:
         run: |
           echo "Hello, world!" > README.md
           echo "Test" > test.txt
-          gh release upload ${{ github.ref_name }} README*
+          gh release upload ${{ github.ref_name }} README* --clobber
   rel:
     runs-on: ubuntu-latest
     needs: setup
@@ -40,7 +40,7 @@ jobs:
         run: |
           echo "Hello, world!" > README.md
           echo "Test" > test.txt
-          gh release upload ${{ github.ref_name }} test*
+          gh release upload ${{ github.ref_name }} test* --clobber
           gh release edit ${{ github.ref_name }} --draft=false
       - name: Output
         id: publish
